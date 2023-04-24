@@ -35,9 +35,6 @@ nav {
 
     background-color: var(--primary-color);
 
-    border-bottom: 5px solid var(--secondary-color);
-
-    transition: 1s border-bottom;
 
     position: fixed;
     top: 0px;
@@ -202,11 +199,11 @@ nav ul li{
     background-color: var(--secondary-color);
 }
 
-.section:nth-child(3) {
+.section:nth-child(2) {
     background: linear-gradient(0deg, #fff 0%, var(--bg-color) 100%);
 }
 
-.section:nth-child(4) {
+.section:nth-child(3) {
     background-image: url('../img/nature-wallpaper-3622519_1920.jpg');
     background-position: center top;
     background-size: cover;
