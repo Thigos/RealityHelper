@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reality Helper</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <span>R</span>
+            </li>
+            <li>
+                <span class="material-symbols-rounded">
+                    edit_note
+                </span>
+            </li>
+            <li>
+                <span class="material-symbols-rounded">
+                    explore
+                </span>
+            </li>
+            <li>
+                <span class="material-symbols-rounded">
+                    analytics
+                </span>
+            </li>
+        </ul>
+    </nav>
+
+    <section id="sec1">
+        <div class="light-top"><img src="img/light_top.png"></div>
+        <div class="container-title">
+            <h1>Reality Helper</h1>
+            <span>Conectando Realidades</span>
+        </div>
+
+        <div class="information">
+            <div class="box box-apresentacao-logo" style="width: 124px; height: 224px;">
+                <span class="logo">R</span>
+            </div>
+
+            <div class="box box-apresentacao-text" style="width: 269px; height: 131px;">
+                <span>Compartilhe a sua realidade</span>
+            </div>
+        </div>
+
+        <div class="light-bottom"><img src="img/light_bottom.png"></div>
+    </section>
+</body>
+</html>
+<script>
+    window.addEventListener('load', function() {
+        const img = document.querySelector('.light-bottom img');
+        var imgHeight = img.offsetHeight;
+        var lightBottom = document.querySelector('.light-bottom');
+        lightBottom.style.bottom = -(imgHeight/2) + 'px';
+    });
+</script>

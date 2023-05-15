@@ -1,0 +1,17 @@
+{
+    "name": "reality-helper",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+      "start": "node app.js"
+    },
+    "author": "Thigos Rodrigues",
+    "license": "UNLICENSE",
+    "dependencies": {
+      "express": "^4.17.3",
+      "mysql2": "^2.3.3",
+      "cors": "^2.8.5",
+      "path": "^0.12.7"
+    }
+  }
