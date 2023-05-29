@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reality Helper</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <nav>
@@ -43,20 +44,118 @@
                 <span class="logo">R</span>
             </div>
 
-            <div class="box box-apresentacao-text" style="width: 269px; height: 131px;">
-                <span>Compartilhe a sua realidade</span>
+            <div class="box box-horizontal-text" style="width: 269px; height: 131px;">
+                <span class="text">Compartilhe a sua realidade</span>
             </div>
         </div>
 
         <div class="light-bottom"><img src="img/light_bottom.png"></div>
     </section>
+    <section>
+        <div class="container-subtitle">
+            <h1>Conte sua <br> História</h1>
+        </div>
+        <div class="information">
+            <div class="box box-escrita-logo" style="width: 124px; height: 224px;">
+                <span class="logo">R</span>
+            </div>
+
+            <div class="box box-escrita-text" style="width: 353px; height: 444px;">
+                <div class="escrita-container">
+                    <div class="write-box">
+                        <span class="title">Escreva Aqui</span>
+                        <textarea 
+                         class="txtArea-write"></textarea>
+                    </div>
+                    <!-- <button class="bt-add-wallpaper">Adicionar Wallpaper</button> -->
+                    <button class="bt-enviar">Enviar</button>
+                </div>
+            </div>
+        </div>
+        <div class="light-bottom"><img src="img/light_bottom.png"></div>
+    </section>
+    <section>
+        <div class="container-subtitle">
+            <h1>Explore<br> Realidades</h1>
+        </div>
+        <div class="information">
+            <div class="box box-horizontal-text" style="width: 269px; height: 131px;">
+                <span class="logo">R</span>
+            </div>
+
+            <div class="realitys-carousel">
+                <span class="left-arrow material-symbols-rounded">arrow_back_ios_new</span>
+                
+                <div class="realitys-container">
+                    <div class="column">
+                        <div class="cell"></div>
+                        <div class="cell"></div>
+                    </div>
+                </div>
+
+                <span class="right-arrow material-symbols-rounded">arrow_forward_ios</span>
+            </div>
+        </div>
+        <div class="light-bottom"><img src="img/light_bottom.png"></div>
+    </section>
+    <section>
+        <div class="container-title">
+            <h1>Palavras em Alta</h1>
+        </div>
+
+        <div class="information" style="height: 80%; align-items: center;">
+            <table class="table-token">
+                <tbody>
+                    <tr>
+                        <td>Token1</td>
+                        <td>99%</td>
+                    </tr>
+    
+                    <tr>
+                        <td>Token2</td>
+                        <td>99%</td>
+                    </tr>
+    
+                    <tr>
+                        <td>Token3</td>
+                        <td>99%</td>
+                    </tr>
+
+                    <tr>
+                        <td>Token4</td>
+                        <td>99%</td>
+                    </tr>
+
+                    <tr>
+                        <td>Token5</td>
+                        <td>99%</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+            <div class="chart-container">
+                <canvas id="chart-token"></canvas>
+            </div>
+        </div>
+        
+        <div class="light-bottom"><img src="img/light_bottom.png"></div>
+    </section>
+
 </body>
 </html>
+<script src="js/analytics.js"></script>
 <script>
     window.addEventListener('load', function() {
-        const img = document.querySelector('.light-bottom img');
-        var imgHeight = img.offsetHeight;
-        var lightBottom = document.querySelector('.light-bottom');
-        lightBottom.style.bottom = -(imgHeight/2) + 'px';
+        var lightsBottom = document.getElementsByClassName('light-bottom');
+
+
+        [].forEach.call(lightsBottom, function(element) {
+            const img = element.getElementsByTagName('img')[0];
+            var imgHeight = img.offsetHeight;
+
+            element.style.bottom = -(imgHeight/2) + 'px';
+        });
+        
     });
 </script>
