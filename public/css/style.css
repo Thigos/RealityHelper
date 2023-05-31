@@ -21,6 +21,8 @@
 body{
     height: 100vh;
 
+    overflow-x: hidden;
+
     background-color: #141414;
 }
 
@@ -132,6 +134,32 @@ nav li span.material-symbols-rounded{
 
 .light-top img, .light-bottom img{
     width: 100%;
+}
+
+.message{
+    width: 20vw;
+    height: 50px;
+
+    border-radius: 33px;
+    border: solid 3px #7875FE;
+
+    color: white;
+
+    padding: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: fixed;
+    top: 30vh;
+    right: -25vw;
+
+    transition: 1s;
+}
+
+.message p {
+    text-align: center;
 }
 
 .container-title{
@@ -436,6 +464,26 @@ nav li span.material-symbols-rounded{
     background: #80FE75;
 }
 
+.bt-enviar-error{
+    background: #f84a66;
+
+    animation: shake 0.5s infinite normal;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+  }
+
 .realitys-carousel{
     height: 80vh;
     width: 565px;
@@ -446,10 +494,17 @@ nav li span.material-symbols-rounded{
     justify-content: center;
     align-items: center;
 
-    background: linear-gradient(359.71deg, #f84a66 -0.55%, #857efa 99.75%);
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    /* background: linear-gradient(359.71deg, #f84a66 -0.55%, #857efa 99.75%); */
+    
+    background-image: url('../img/nature-wallpaper-3622519_1920.jpg');
+    background-position: center;
+    background-size: cover;
+    backdrop-filter: blur(5px);
+    box-shadow: inset 0px 0px 20px 20px rgb(0 0 0 / 48%);
 
     border-radius: 58px;
+
+    position: relative;
 }
 
 .left-arrow, .right-arrow {
@@ -458,19 +513,23 @@ nav li span.material-symbols-rounded{
         'wght' 700;
 
     color: white;
-
+    
+    text-shadow: 0 0 6px black;
     font-size: 55px;
 
     cursor: pointer;
 
+    position: absolute;
+    z-index: 9;
+
 }
 
 .left-arrow {
-    margin-left: 26px;
+    left: 26px;
 }
 
 .right-arrow {
-    margin-right: 26px;
+    right: 26px;
 }
 
 .realitys-container{
@@ -493,15 +552,40 @@ nav li span.material-symbols-rounded{
     justify-content: center;
     align-items: center;
     gap: 22px;
+
+    transition: 800ms;
+    transition-timing-function: normal;
 }
 
 .realitys-container .column .cell{
-    width: 181px;
+    width: 13.2em;
     height: 228px;
+
+    padding-bottom: 15px;
+    padding-top: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 
     background: #FFFFFF;
     box-shadow: -7px 4px 0px rgba(0, 0, 0, 0.25);
     border-radius: 33px;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 11;
+    overflow: hidden;
+    -webkit-box-orient: vertical; 
+    line-height: 1.38em;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 500ms;
+
+}
+
+.realitys-container .column .cell:hover{
+    transform: scale(1.08);
 }
 
 .table-token{

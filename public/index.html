@@ -32,6 +32,10 @@
         </ul>
     </nav>
 
+    <div class="message" id="msg_container">
+        <p id="text_msg_user"></p>
+    </div>
+
     <section id="sec1">
         <div class="light-top"><img src="img/light_top.png"></div>
         <div class="container-title">
@@ -84,16 +88,12 @@
             </div>
 
             <div class="realitys-carousel">
-                <span class="left-arrow material-symbols-rounded">arrow_back_ios_new</span>
+                <span class="left-arrow material-symbols-rounded" id="bt_left_carousel">arrow_back_ios_new</span>
                 
-                <div class="realitys-container">
-                    <div class="column">
-                        <div class="cell"></div>
-                        <div class="cell"></div>
-                    </div>
+                <div class="realitys-container" id="realitys-container">
                 </div>
 
-                <span class="right-arrow material-symbols-rounded">arrow_forward_ios</span>
+                <span class="right-arrow material-symbols-rounded" id="bt_right_carousel">arrow_forward_ios</span>
             </div>
         </div>
         <div class="light-bottom"><img src="img/light_bottom.png"></div>
@@ -144,11 +144,15 @@
 
 </body>
 </html>
-<script src="js/analytics.js"></script>
 <script>
+    const msgContainer = document.getElementById('msg_container');
+    const textMsgUser = document.getElementById('text_msg_user');
+    const btRightCarousel = document.getElementById('bt_right_carousel');
+    const btLeftCarousel = document.getElementById('bt_left_carousel');
+
     window.addEventListener('load', function() {
         var lightsBottom = document.getElementsByClassName('light-bottom');
-
+        
 
         [].forEach.call(lightsBottom, function(element) {
             const img = element.getElementsByTagName('img')[0];
@@ -158,4 +162,43 @@
         });
         
     });
+
+    const show_msg = (text)=>{
+        textMsgUser.innerText = text;
+
+        msgContainer.style.right = '30px';
+
+        setTimeout(()=>{
+            msgContainer.style.right = '-25vw';
+        }, 4000);
+    }
+
+    
+    btRightCarousel.onclick = ()=>{
+        const columnsCarousel = document.getElementsByClassName('column');
+        var quantColumns = columnsCarousel.length-1;
+
+        if(columnsCarousel[quantColumns].style.left != '0%'){
+            for (let i = 0; i <= quantColumns; i++) {
+                var originalLeft = Number(columnsCarousel[i].style.left.replace('%',''));
+                columnsCarousel[i].style.left = (originalLeft-100) + '%';
+            }
+        }
+    }
+
+    btLeftCarousel.onclick = ()=>{
+        const columnsCarousel = document.getElementsByClassName('column');
+        var quantColumns = columnsCarousel.length-1;
+
+        if(columnsCarousel[0].style.left != '0%'){
+            for (let i = 0; i <= quantColumns; i++) {
+                var originalLeft = Number(columnsCarousel[i].style.left.replace('%',''));
+                columnsCarousel[i].style.left = (originalLeft+100) + '%';
+            }
+        }
+    }
+
 </script>
+<script src="js/analytics.js"></script>
+<script src="js/DataLoader.js"></script>
+<script src="js/requests.js"></script>
