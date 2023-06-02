@@ -1,4 +1,4 @@
--- Active: 1679521204876@@127.0.0.1@3306
+-- Active: 1685712302980@@127.0.0.1@3306@RealityHelper
 CREATE DATABASE RealityHelper;
 
 USE RealityHelper;
@@ -15,7 +15,7 @@ CREATE TABLE tbSpeechTagger(
     ,word VARCHAR(50)
     ,tag VARCHAR(3)
     ,CONSTRAINT fk_tbSpeechTagger_tbStories FOREIGN KEY (fk_tokenizeStories) REFERENCES tbStories(idStories)
-    ,PRIMARY KEY(idSpeechTagger, fk_tokenizeStories, word)
+    ,PRIMARY KEY(idSpeechTagger, fk_tokenizeStories)
 );
 
 --DADOS GERADOS POR AI
@@ -40,3 +40,6 @@ INSERT INTO tbStories (textStories) VALUES
 ('Eu sou um biólogo que estuda os animais selvagens. Eu amo a natureza e me interesso pela diversidade da vida. Eu faço pesquisas, observações e experimentos para entender o comportamento e a evolução das espécies. Eu já descobri muitas coisas interessantes e importantes para a ciência e para a conservação. Mas eu também enfrento muitos perigos, dificuldades e surpresas. Eu sei que o campo é cheio de desafios e mistérios, mas eu não me canso de aprender. Eu sou um biólogo e essa é a minha curiosidade.'),
 ('Eu sou uma atriz que interpreta vários personagens no teatro, no cinema e na televisão. Eu gosto de atuar e de me expressar através da arte. Eu já fiz parte de muitas peças, filmes e novelas. Eu tenho muito talento e criatividade. Mas eu também tenho que estudar, ensaiar e me adaptar a cada papel. Eu sei que a profissão é competitiva e exigente, mas eu não perco a minha essência. Eu sou uma atriz e essa é a minha magia.'),
 ('Eu sou um piloto de avião que viaja pelo mundo todo. Eu gosto de voar e de conhecer novos lugares. Eu já visitei muitos países e continentes. Eu tenho muita habilidade e experiência. Mas eu também tenho que lidar com o cansaço, o jet lag e as turbulências. Eu sei que o trabalho é estressante e cansativo, mas eu não troco por nada. Eu sou um piloto de avião e essa é a minha aventura.');
+
+SELECT idStories, textStories FROM tbStories WHERE idStories NOT IN (SELECT fk_tokenizeStories FROM tbSpeechTagger);
+SELECT COUNT(*) AS quant, word FROM tbSpeechTagger GROUP BY word ORDER BY quant;

@@ -40,7 +40,27 @@ function listar(req, res){
     );
 }
 
+function analytics(req, res){
+    var limited = req.params.limited;
+    realityModel.analytics(limited).then(
+        function (resultado) {
+            res.json(resultado);
+        }
+    ).catch(
+        function (erro) {
+            console.log(erro);
+            console.log(
+                "\nHouve um erro! Erro: ",
+                erro.sqlMessage
+            );
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+}
+
+
 module.exports = {
     cadastrar,
-    listar
+    listar,
+    analytics
 }

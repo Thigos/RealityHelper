@@ -10,6 +10,7 @@ btEnviar.onclick = ()=>{
 
 window.onload = ()=>{
     get_stories();
+    get_analytics();
 }
 
 async function requisicao(METHOD, URL, dados) {
@@ -68,5 +69,16 @@ async function get_stories(){
 
         // ./dataLoader.js
         dataLoader.realitys(dados);
+    }
+}
+
+async function get_analytics(){
+    var req = await requisicao('GET', '/reality/analytics/true', undefined);
+
+    if(req.ok){
+        dados = await req.json();
+
+        // ./dataLoader.js
+        dataLoader.charts(dados);
     }
 }

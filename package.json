@@ -4,6 +4,8 @@
     "description": "",
     "main": "app.js",
     "scripts": {
+      "services install": "cd services && pip install -r requirements.txt",
+      "services": "cd services && python textTagger.py",
       "start": "node app.js"
     },
     "author": "Thigos Rodrigues",

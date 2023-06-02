@@ -494,17 +494,17 @@ nav li span.material-symbols-rounded{
     justify-content: center;
     align-items: center;
 
-    /* background: linear-gradient(359.71deg, #f84a66 -0.55%, #857efa 99.75%); */
+    background: radial-gradient(circle, rgba(133,126,250,1) 0%, rgba(89,79,255,1) 90%);
     
-    background-image: url('../img/nature-wallpaper-3622519_1920.jpg');
-    background-position: center;
+    /*background-image: url('../img/nature-wallpaper-3622519_1920.jpg');*/
+    background-position: bottom;
     background-size: cover;
-    backdrop-filter: blur(5px);
-    box-shadow: inset 0px 0px 20px 20px rgb(0 0 0 / 48%);
 
-    border-radius: 58px;
+    border-radius: 50%;
 
     position: relative;
+
+    transition: 700ms;
 }
 
 .left-arrow, .right-arrow {
@@ -513,6 +513,10 @@ nav li span.material-symbols-rounded{
         'wght' 700;
 
     color: white;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
     
     text-shadow: 0 0 6px black;
     font-size: 55px;
@@ -535,10 +539,19 @@ nav li span.material-symbols-rounded{
 .realitys-container{
     position: relative;
 
+    background: rgba(255, 255, 255, 0.329);
+    backdrop-filter: blur( 2px );
+    border-radius: 50%;
+
+    box-shadow: inset 0px 0px 20px 20px rgb(0 0 0 / 48%);
+
     width: 100%;
     height: 100%;
 
     overflow: hidden;
+
+    transition: 700ms;
+
 }
 
 .realitys-container .column{
@@ -558,34 +571,45 @@ nav li span.material-symbols-rounded{
 }
 
 .realitys-container .column .cell{
-    width: 13.2em;
-    height: 228px;
+    width: 50%;
+    height: 80%;
 
     padding-bottom: 15px;
     padding-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
 
-    background: #FFFFFF;
-    box-shadow: -7px 4px 0px rgba(0, 0, 0, 0.25);
+    text-align: justify;
+
+    background-color: #FFFFFF;
+
     border-radius: 33px;
+    box-shadow: -7px 4px 0px rgba(0, 0, 0, 0.25);
 
-    display: -webkit-box;
-    -webkit-line-clamp: 11;
-    overflow: hidden;
-    -webkit-box-orient: vertical; 
-    line-height: 1.38em;
+    overflow: auto;
 
     font-weight: bold;
-
-    cursor: pointer;
 
     transition: 500ms;
 
 }
 
-.realitys-container .column .cell:hover{
-    transform: scale(1.08);
+.cell::-webkit-scrollbar{
+    width: 10px;
+    cursor:default;
+}
+
+.cell::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+.cell::-webkit-scrollbar-thumb{
+    background-color: #1c1c1c;
+    border-radius: 10px;
+}
+
+.txtArea-write::-webkit-scrollbar-button{
+    display: none;
 }
 
 .table-token{
@@ -608,6 +632,8 @@ td{
     font-weight: 100;
     font-size: 25px;
     line-height: 24px;
+
+    text-transform: capitalize;
 
     text-align: center;
 

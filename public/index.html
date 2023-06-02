@@ -87,7 +87,7 @@
                 <span class="logo">R</span>
             </div>
 
-            <div class="realitys-carousel">
+            <div class="realitys-carousel" id="realitys-carousel">
                 <span class="left-arrow material-symbols-rounded" id="bt_left_carousel">arrow_back_ios_new</span>
                 
                 <div class="realitys-container" id="realitys-container">
@@ -105,30 +105,30 @@
 
         <div class="information" style="height: 80%; align-items: center;">
             <table class="table-token">
-                <tbody>
+                <tbody id="tb_analytics">
                     <tr>
                         <td>Token1</td>
-                        <td>99%</td>
+                        <td>99x</td>
                     </tr>
     
                     <tr>
                         <td>Token2</td>
-                        <td>99%</td>
+                        <td>99x</td>
                     </tr>
     
                     <tr>
                         <td>Token3</td>
-                        <td>99%</td>
+                        <td>99x</td>
                     </tr>
 
                     <tr>
                         <td>Token4</td>
-                        <td>99%</td>
+                        <td>99x</td>
                     </tr>
 
                     <tr>
                         <td>Token5</td>
-                        <td>99%</td>
+                        <td>99x</td>
                     </tr>
                 </tbody>
             </table>
@@ -149,6 +149,19 @@
     const textMsgUser = document.getElementById('text_msg_user');
     const btRightCarousel = document.getElementById('bt_right_carousel');
     const btLeftCarousel = document.getElementById('bt_left_carousel');
+    const realitysContainer = document.getElementById('realitys-container');
+    const realityCarousel = document.getElementById('realitys-carousel');
+    const tbAnalytics = document.getElementById('tb_analytics');
+
+    const genBorderRadius = () =>{
+        return Math.floor(Math.random() * (50 - 40)) + 40;
+    }
+
+    setInterval(()=>{
+        let style = `${genBorderRadius()}%`;
+        realityCarousel.style.borderRadius = style;
+        realitysContainer.style.borderRadius = style;
+    }, 800);
 
     window.addEventListener('load', function() {
         var lightsBottom = document.getElementsByClassName('light-bottom');

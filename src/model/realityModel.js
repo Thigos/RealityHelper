@@ -16,7 +16,16 @@ function listar(){
     return database.executar(query);
 }
 
+function analytics(limited){
+    var query = `
+        SELECT COUNT(*) AS quant, word FROM tbSpeechTagger GROUP BY word ORDER BY quant ${limited ? 'limit 5;': ';'};
+    `;
+    console.log('Executando Em:', __filename);
+    return database.executar(query);
+}
+
 module.exports = {
     cadastrar,
-    listar
+    listar,
+    analytics
 }
