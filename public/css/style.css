@@ -39,17 +39,17 @@ section{
 
 nav{
     position: fixed;
-    left: 0px;
-    top: 0px;
+    z-index: 999;
+    left: 100px;
+    top: 100px;
 
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
 
     width: 31px;
-    height: 100vh;
-
-    background: linear-gradient(180deg, #0C0C0C 66.26%, rgba(12, 12, 12, 0) 101.05%);
+    height: 70vh;
 }
 
 nav ul{
@@ -60,34 +60,86 @@ nav ul{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 5px;
+
 }
 
 nav li{
-    width: 28px;
+    list-style: none;
 
-    padding-bottom: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-    border-bottom: 2px solid rgba(20, 20, 20, 0.49);
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
 }
+
+.separator{
+    position: relative;
+
+    width: 2px;
+    height: 25px;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+.separator div{
+    transition: 300ms;
+    background-color: #FFFFFF;
+}
+
+.active::after{
+    content: '';
+    position: absolute;
+
+    width: 200%;
+    height: 200%;
+
+    top: -100%;
+
+    border-radius: 35%;
+
+    background-color: #1c1c1c;
+
+    animation: spin 10s forwards cubic-bezier(0, 0.3, 0.58, 1);
+
+}
+
+@keyframes spin {
+    from {
+      transform: translateY(0%) rotate(0deg);
+    }
+    to {
+      transform: translateY(-100%) rotate(360deg);
+    }
+  
+  }
 
 nav li span{
     border-radius: 50%;
-    border: 1px solid #FFFFFF;
+    border: 2px solid #FFFFFF;
 
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
     
     display: flex;
     align-items: center;
     justify-content: center;
 
     color: #FFFFFF;
-    font-size: 16px !important;
+    font-size: 20px !important;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
 
     cursor: pointer;
 
-    
+    position: relative;
+    z-index: 9;
 }
 
 nav li span.material-symbols-rounded{
@@ -485,7 +537,7 @@ nav li span.material-symbols-rounded{
   }
 
 .realitys-carousel{
-    height: 80vh;
+    height: 565px;
     width: 565px;
 
     margin-left: 124px;

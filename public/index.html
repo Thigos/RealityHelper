@@ -14,17 +14,26 @@
             <li>
                 <span>R</span>
             </li>
-            <li>
+            <div class="separator">
+                <div id="separator1_back"></div>
+            </div>
+            <li id="navbar_li_2">
                 <span class="material-symbols-rounded">
                     edit_note
                 </span>
             </li>
-            <li>
+            <div class="separator">
+                <div id="separator2_back"></div>
+            </div>
+            <li id="navbar_li_3">
                 <span class="material-symbols-rounded">
                     explore
                 </span>
             </li>
-            <li>
+            <div class="separator">
+                <div id="separator3_back"></div>
+            </div>
+            <li id="navbar_li_4">
                 <span class="material-symbols-rounded">
                     analytics
                 </span>
@@ -152,6 +161,51 @@
     const realitysContainer = document.getElementById('realitys-container');
     const realityCarousel = document.getElementById('realitys-carousel');
     const tbAnalytics = document.getElementById('tb_analytics');
+    const separator1Back = document.getElementById('separator1_back');
+    const separator2Back = document.getElementById('separator2_back');
+    const separator3Back = document.getElementById('separator3_back');
+    const navbarLi2 = document.getElementById('navbar_li_2');
+    const navbarLi3 = document.getElementById('navbar_li_3');
+    const navbarLi4 = document.getElementById('navbar_li_4');
+    const windowHeight = window.innerHeight-27;
+
+    document.onscroll = ()=>{
+        if(window.scrollY <= windowHeight * 0.8){
+            //Separator1
+            var altura = (window.scrollY * 25)/windowHeight;
+            separator1Back.style.height = altura + 'px';
+            separator2Back.style.height = '0px';
+            navbarLi2.className = '';
+            navbarLi2.style.backgroundColor = '';
+        }else if(window.scrollY <= (windowHeight * 1.8)){
+            //Separator2
+            navbarLi2.className = 'active';
+            navbarLi2.style.backgroundColor = '#80FE75';
+            var altura = ((window.scrollY-windowHeight) * 25)/windowHeight;
+            separator1Back.style.height = '25px';
+            separator2Back.style.height = altura + 'px';
+            separator3Back.style.height = '0px';
+            navbarLi3.className = '';
+            navbarLi3.style.backgroundColor = '';
+            
+        }else if(window.scrollY <= (windowHeight * 3)){
+            //Separator2
+            navbarLi3.className = 'active';
+            navbarLi3.style.backgroundColor = '#7875FE';
+            var altura = ((window.scrollY-windowHeight*2) * 25)/windowHeight;
+            separator2Back.style.height = '25px';
+            separator3Back.style.height = altura + 'px';
+
+            if(window.scrollY >= (windowHeight * 2.5)){
+                separator3Back.style.height = '25px';
+                navbarLi4.className = 'active';
+                navbarLi4.style.background = 'linear-gradient(180deg, rgb(255, 85, 105), rgb(120, 117, 254))';
+            }else{
+                navbarLi4.className = '';
+                navbarLi4.style.background = '';
+            }
+        }
+    }
 
     const genBorderRadius = () =>{
         return Math.floor(Math.random() * (50 - 40)) + 40;
