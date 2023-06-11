@@ -118,7 +118,7 @@ nav li{
   
   }
 
-nav li span{
+nav li a{
     border-radius: 50%;
     border: 2px solid #FFFFFF;
 
@@ -135,6 +135,7 @@ nav li span{
     -webkit-user-select: none; /* Safari */
     -ms-user-select: none; /* IE 10 and IE 11 */
     user-select: none; /* Standard syntax */
+    text-decoration: none;
 
     cursor: pointer;
 
@@ -142,7 +143,7 @@ nav li span{
     z-index: 9;
 }
 
-nav li span.material-symbols-rounded{
+nav li a.material-symbols-rounded{
     font-variation-settings:
     'opsz' 20 !important;
 
@@ -222,7 +223,7 @@ nav li span.material-symbols-rounded{
 
 .container-title h1{
     font-weight: 300;
-    font-size: 64px;
+    font-size: 54px;
 
     color: #FFFFFF;
 }
@@ -546,9 +547,6 @@ nav li span.material-symbols-rounded{
     justify-content: center;
     align-items: center;
 
-    background: radial-gradient(circle, rgba(133,126,250,1) 0%, rgba(89,79,255,1) 90%);
-    
-    /*background-image: url('../img/nature-wallpaper-3622519_1920.jpg');*/
     background-position: bottom;
     background-size: cover;
 
@@ -590,8 +588,8 @@ nav li span.material-symbols-rounded{
 
 .realitys-container{
     position: relative;
+    
 
-    background: rgba(255, 255, 255, 0.329);
     backdrop-filter: blur( 2px );
     border-radius: 50%;
 
@@ -644,6 +642,22 @@ nav li span.material-symbols-rounded{
 
     transition: 500ms;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cell div{
+    border-top: 5px solid rgb(120, 117, 254);
+
+    height: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    color: #000;
 }
 
 .cell::-webkit-scrollbar{

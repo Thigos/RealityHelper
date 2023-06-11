@@ -1,6 +1,7 @@
-const chartContext = document.getElementById('chart-token');
+const chartTokenContext = document.getElementById('chart-token');
+const chartSentimentsContext = document.getElementById('chart-sentiments');
 
-var chartData = {
+var chartTokenData = {
     labels: [
         /*'Red',
         'Blue',
@@ -21,12 +22,40 @@ var chartData = {
     }]
 };
 
-const config = {
+const configTokenChart = {
     type: 'doughnut',
-    data: chartData,
+    data: chartTokenData,
     options: {
         borderWidth: 0,
     }
 }
 
-var chartToken = new Chart(chartContext, config);
+var chartToken = new Chart(chartTokenContext, configTokenChart);
+
+var chartSentimentData = {
+    labels: [],
+    datasets: [{
+        label: 'Sentimentos',
+        data: [],
+        backgroundColor: 'rgba(217, 217, 217, 1)',
+        borderRadius: 10,
+    }]
+}
+
+const configSentimentChart = {
+    type: 'bar',
+    data: chartSentimentData,
+    options: {
+        plugins: {
+            legend: {
+                labels: {
+                    font: {
+                        weight: 700
+                    }
+                }
+            }
+        }
+    }
+}
+
+var chartSentiment = new Chart(chartSentimentsContext, configSentimentChart);

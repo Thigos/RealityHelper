@@ -10,15 +10,33 @@ function cadastrar(stories){
 
 function listar(){
     var query = `
-        SELECT * FROM tbStories ORDER BY RAND();
+    SELECT tbStories.*, pos, neu, neg FROM tbStories
+    INNER JOIN (
+        SELECT AVG(pos) AS pos, AVG(neu) AS neu, AVG(neg) AS neg, fk_tokenizeStories FROM tbsentiment GROUP BY fk_tokenizeStories
+        ) AS sentiment ON idStories = sentiment.fk_tokenizeStories
+    ORDER BY RAND();
     `;
     console.log('Executando Em:', __filename);
     return database.executar(query);
 }
 
-function analytics(limited){
+function analyticsToken(limited){
     var query = `
-        SELECT COUNT(*) AS quant, word FROM tbSpeechTagger GROUP BY word ORDER BY quant ${limited ? 'limit 5;': ';'};
+        SELECT COUNT(*) AS quant, word FROM tbSpeechTagger ${limited ? 'WHERE isChartable GROUP BY word ORDER BY quant limit 5;': 'GROUP BY tag;'};
+    `;
+    console.log('Executando Em:', __filename);
+    return database.executar(query);
+}
+
+function analyticsSentiment(){
+    var query = `
+        SELECT
+            COUNT(CASE WHEN Averages.compound >= 0.05 THEN 1 END) AS 'Positivo',
+            COUNT(CASE WHEN Averages.compound > -0.05 AND compound < 0.05 THEN 1 END) AS 'Neutro',
+            COUNT(CASE WHEN Averages.compound <= -0.05 THEN 1 END) AS 'Negativo'
+        FROM (
+            SELECT AVG(compound) AS compound FROM tbsentiment GROUP BY fk_tokenizeStories
+        ) AS Averages;
     `;
     console.log('Executando Em:', __filename);
     return database.executar(query);
@@ -27,5 +45,6 @@ function analytics(limited){
 module.exports = {
     cadastrar,
     listar,
-    analytics
+    analyticsToken,
+    analyticsSentiment
 }

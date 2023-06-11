@@ -1,6 +1,6 @@
--- Active: 1679521204876@@127.0.0.1@3306@bd_smfp
+-- Active: 1679521204876@@127.0.0.1@3306@realityhelper
+DROP DATABASE RealityHelper;
 CREATE DATABASE RealityHelper;
-
 USE RealityHelper;
 
 CREATE TABLE tbStories(
@@ -14,8 +14,20 @@ CREATE TABLE tbSpeechTagger(
     ,fk_tokenizeStories INT
     ,word VARCHAR(50)
     ,tag VARCHAR(3)
+    ,isChartable BOOLEAN
     ,CONSTRAINT fk_tbSpeechTagger_tbStories FOREIGN KEY (fk_tokenizeStories) REFERENCES tbStories(idStories)
     ,PRIMARY KEY(idSpeechTagger, fk_tokenizeStories)
+);
+
+CREATE TABLE tbSentiment(
+    idSentiment INT AUTO_INCREMENT
+    ,fk_tokenizeStories INT
+    ,compound DECIMAL(6,5) 
+    ,pos DECIMAL(5,4) 
+    ,neu DECIMAL(5,4) 
+    ,neg DECIMAL(5,4)
+    ,CONSTRAINT fk_tbSentiment_tbStories FOREIGN KEY (fk_tokenizeStories) REFERENCES tbStories(idStories)
+    ,PRIMARY KEY(idSentiment, fk_tokenizeStories)
 );
 
 --DADOS GERADOS POR AI
@@ -42,4 +54,33 @@ INSERT INTO tbStories (textStories) VALUES
 ('Eu sou um piloto de avião que viaja pelo mundo todo. Eu gosto de voar e de conhecer novos lugares. Eu já visitei muitos países e continentes. Eu tenho muita habilidade e experiência. Mas eu também tenho que lidar com o cansaço, o jet lag e as turbulências. Eu sei que o trabalho é estressante e cansativo, mas eu não troco por nada. Eu sou um piloto de avião e essa é a minha aventura.');
 
 SELECT idStories, textStories FROM tbStories WHERE idStories NOT IN (SELECT fk_tokenizeStories FROM tbSpeechTagger);
-SELECT COUNT(*) AS quant, word FROM tbSpeechTagger GROUP BY word ORDER BY quant;
+SELECT COUNT(*) AS quant, word FROM tbSpeechTagger WHERE isChartable GROUP BY word ORDER BY quant;
+
+SELECT AVG(compound) AS compound
+FROM tbsentiment
+WHERE fk_tokenizeStories = 2;
+
+SELECT
+    COUNT(CASE WHEN Averages.pos > Averages.neu AND Averages.pos > Averages.neg THEN 1 END) AS count_positive,
+    COUNT(CASE WHEN Averages.neu > Averages.pos AND Averages.neu > Averages.neg THEN 1 END) AS count_neutral,
+    COUNT(CASE WHEN Averages.neg > Averages.neu AND Averages.neg > Averages.pos THEN 1 END) AS count_negative
+FROM (
+    SELECT AVG(pos) AS pos, AVG(neu) AS neu, AVG(neg) AS neg FROM tbsentiment GROUP BY `fk_tokenizeStories`
+) AS Averages;
+
+
+SELECT
+    COUNT(CASE WHEN Averages.compound >= 0.05 THEN 1 END) AS count_positive,
+    COUNT(CASE WHEN Averages.compound <= -0.05 THEN 1 END) AS count_negative,
+    COUNT(CASE WHEN Averages.compound > -0.05 AND compound < 0.05 THEN 1 END) AS count_neutral
+FROM (
+    SELECT AVG(compound) AS compound FROM tbsentiment GROUP BY `fk_tokenizeStories`
+) AS Averages;
+
+
+
+SELECT tbStories.*, pos, neu, neg FROM tbStories
+    INNER JOIN (
+        SELECT AVG(pos) AS pos, AVG(neu) AS neu, AVG(neg) AS neg, fk_tokenizeStories FROM tbsentiment GROUP BY `fk_tokenizeStories`
+    ) AS sentiment ON `idStories` = sentiment.`fk_tokenizeStories`
+ORDER BY RAND();

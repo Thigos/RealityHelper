@@ -22,7 +22,7 @@ AMBIENTE_PROCESSO = 'desenvolvimento';
 // CONEXÃO DO MYSQL WORKBENCH (LOCAL)
 var mySqlConfig = {
     host: "localhost",
-    database: "RealityHelper",
+    database: "realityhelper",
     user: "aluno",
     password: "sptech",
 };

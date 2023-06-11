@@ -10,7 +10,8 @@ btEnviar.onclick = ()=>{
 
 window.onload = ()=>{
     get_stories();
-    get_analytics();
+    get_analyticsToken();
+    get_analyticsSentiment();
 }
 
 async function requisicao(METHOD, URL, dados) {
@@ -72,13 +73,24 @@ async function get_stories(){
     }
 }
 
-async function get_analytics(){
-    var req = await requisicao('GET', '/reality/analytics/true', undefined);
+async function get_analyticsToken(){
+    var req = await requisicao('GET', '/reality/analyticsToken/true', undefined);
 
     if(req.ok){
         dados = await req.json();
 
         // ./dataLoader.js
-        dataLoader.charts(dados);
+        dataLoader.chartToken(dados);
+    }
+}
+
+async function get_analyticsSentiment(){
+    var req = await requisicao('GET', '/reality/analyticsSentiment', undefined);
+
+    if(req.ok){
+        dados = await req.json();
+
+        // ./dataLoader.js
+        dataLoader.chartSentiment(dados);
     }
 }
