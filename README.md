@@ -6,13 +6,16 @@ Neste projeto é utilizado diversos sistemas de análise léxica para separar pa
 
 A palavra é considerada relevante se atender aos requisitos:
 ### Deve Ser:
+```
 ADJ -> ADJETIVO
 
 V -> VERBO
 
 PCP -> PARTICÍPIO
+```
 
 ### Não pode suceder a:
+```
 PROADJ -> PRONOME ADJETIVO
 
 NPROP -> NOME PRÓPRIO
@@ -24,6 +27,7 @@ PROPESS -> PRONOME PESSOAL
 PRO-KS -> PRONOME CONECTIVO SUBORDINATIVO
 
 ADV-KS-REL -> ADVÉRBIO RELATIVO SUBORDINATIVO
+```
 
 ### Confira o Manual [Mac-Morpho](http://nilc.icmc.usp.br/macmorpho/): [Link do Manual](http://nilc.icmc.usp.br/macmorpho/macmorpho-manual.pdf)
 
