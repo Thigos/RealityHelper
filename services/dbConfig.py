@@ -4,8 +4,8 @@ class database:
     def connection():
         connection = mysql.connector.connect(
             host="localhost",
-            user="aluno",
-            password="sptech",
+            user="",
+            password="",
             database='RealityHelper',
         )
         cursor = connection.cursor()
