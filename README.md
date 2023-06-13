@@ -1,7 +1,7 @@
 # RealityHelper
 Um espaço para compartilhar sua realidade, seu jeito de viver e ver o mundo.
 
-## Análise
+# Análise
 Neste projeto, são utilizados diversos sistemas de análise léxica para separar palavras relevantes e classificar sentimentos (positivos, neutros e negativos) no texto cadastrado.
 
 Uma palavra é considerada relevante se atender aos seguintes requisitos:
@@ -31,7 +31,7 @@ ADV-KS-REL: ADVÉRBIO RELATIVO SUBORDINATIVO
 
 ### Você pode consultar o Manual [Mac-Morpho](http://nilc.icmc.usp.br/macmorpho/): [Link do Manual](http://nilc.icmc.usp.br/macmorpho/macmorpho-manual.pdf) para obter mais informações sobre o sistema de análise léxica.
 
-## Referências
+# Referências
 - NLTK: Bird, S., Klein, E., & Loper, E. (2009). Natural language processing with Python: analyzing text with the natural language toolkit. " O&#x27;Reilly Media, Inc." - [Link para o site oficial](https://www.nltk.org/)
 
 - inoueMashuu. POS-tagger-portuguese-nltk. Available: [Link para o repositório do Github](https://github.com/inoueMashuu/POS-tagger-portuguese-nltk)
