@@ -1,2 +1,3 @@
 nltk
 mysql-connector-python
+vaderSentiment
