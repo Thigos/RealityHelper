@@ -2,34 +2,34 @@
 Um espaço para compartilhar sua realidade, seu jeito de viver e ver o mundo.
 
 ## Análise
-Neste projeto é utilizado diversos sistemas de análise léxica para separar palavras relevantes e classificar sentimentos (Positivos, Neutros e Negativos) no texto cadastrado.
+Neste projeto, são utilizados diversos sistemas de análise léxica para separar palavras relevantes e classificar sentimentos (positivos, neutros e negativos) no texto cadastrado.
 
-A palavra é considerada relevante se atender aos requisitos:
+Uma palavra é considerada relevante se atender aos seguintes requisitos:
 ### Deve Ser:
 ```
-ADJ -> ADJETIVO
+ADJ: ADJETIVO
 
-V -> VERBO
+V: VERBO
 
-PCP -> PARTICÍPIO
+PCP: PARTICÍPIO
 ```
 
 ### Não pode suceder a:
 ```
-PROADJ -> PRONOME ADJETIVO
+PROADJ: PRONOME ADJETIVO
 
-NPROP -> NOME PRÓPRIO
+NPROP: NOME PRÓPRIO
 
-PROSUB -> PRONOME SUBSTANTIVO
+PROSUB: PRONOME SUBSTANTIVO
 
-PROPESS -> PRONOME PESSOAL
+PROPESS: PRONOME PESSOAL
 
-PRO-KS -> PRONOME CONECTIVO SUBORDINATIVO
+PRO-KS: PRONOME CONECTIVO SUBORDINATIVO
 
-ADV-KS-REL -> ADVÉRBIO RELATIVO SUBORDINATIVO
+ADV-KS-REL: ADVÉRBIO RELATIVO SUBORDINATIVO
 ```
 
-### Confira o Manual [Mac-Morpho](http://nilc.icmc.usp.br/macmorpho/): [Link do Manual](http://nilc.icmc.usp.br/macmorpho/macmorpho-manual.pdf)
+### Você pode consultar o Manual [Mac-Morpho](http://nilc.icmc.usp.br/macmorpho/): [Link do Manual](http://nilc.icmc.usp.br/macmorpho/macmorpho-manual.pdf) para obter mais informações sobre o sistema de análise léxica.
 
 ## Referências
 - NLTK: Bird, S., Klein, E., & Loper, E. (2009). Natural language processing with Python: analyzing text with the natural language toolkit. " O&#x27;Reilly Media, Inc." - [Link para o site oficial](https://www.nltk.org/)
