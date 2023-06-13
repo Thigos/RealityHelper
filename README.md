@@ -2,7 +2,7 @@
 Um espaço para compartilhar sua realidade, seu jeito de viver e ver o mundo.
 
 ## Análise
-Neste projeto é utilizado diversos sistemas de análise léxica para compreender palavras relevantes
+Neste projeto é utilizado diversos sistemas de análise léxica para separar palavras relevantes e classificar sentimentos (Positivos, Neutros e Negativos) no texto cadastrado
 
 ## Referências
 - NLTK: Bird, S., Klein, E., & Loper, E. (2009). Natural language processing with Python: analyzing text with the natural language toolkit. " O&#x27;Reilly Media, Inc." - [Link para o site oficial](https://www.nltk.org/)
