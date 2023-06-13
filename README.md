@@ -3,6 +3,7 @@ Um espaço para compartilhar sua realidade, seu jeito de viver e ver o mundo.
 
 ## Análise
 Neste projeto é utilizado diversos sistemas de análise léxica para separar palavras relevantes e classificar sentimentos (Positivos, Neutros e Negativos) no texto cadastrado.
+
 A palavra é considerada relevante se atender aos requisitos:
 ### Deve Ser:
 ADJ -> ADJETIVO
